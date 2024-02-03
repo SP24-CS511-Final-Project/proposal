@@ -27,39 +27,34 @@
 
 %%
 %% The "author" command and its associated commands are used to define the authors and their affiliations.
-\author{Member 1}
-\affiliation{%
+\author{Yangchen Ye}
+\affiliation{
+  University of Illinois Urbana Champaign
 }
-\email{@gatech.edu}
+\email{yy49@illinois.edu}
 
-\author{Member 2}
-\affiliation{%
+\author{Xixiang Liu}
+\affiliation{
+  University of Illinois Urbana Champaign
 }
-\email{@gatech.edu}
+\email{xixiang3@illinois.edu}
 
-\author{Member 3}
-\affiliation{%
+\author{Zihan Shan}
+\affiliation{
+  University of Illinois Urbana Champaign
 }
-\email{@gatech.edu}
+\email{zshan2@illinois.edu}
 
 %%
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-Fill in this section with your topic sentence outline. Delete or comment out Section 2 before submitting the project proposal. References can be edited in the \texttt{ref.bib} file.
 
-\minihead{Problem} 
-
-\minihead{Set up the Bit}
-
-\minihead{Introduce the Flip}
-
-\minihead{Instantiate the flip in a solution}
-
-\minihead{Evaluation Plan}
-
-\minihead{Implications}
-
+In modern SQL execution, predicate is often pushed into table scan to leverage the metadata and indexes provided by the underlying storage format, e.g., apache parquet, for data skipping and efficient processing, and the key to success is for the storage format to provide good enough data structures to support this use case.
+The effectiveness of techniques employed by apache parquet, i.e., zone maps and column indexes, are limited by data partitioning strategies and predicate selectivity, whereas new techniques which claim to have robust performance boost like column sketches are only evaluated with in-memory processing and lack integration into an actual storage format like parquet.
+In this project, we propose a reproduction and expansion of the column sketch technique on top of apache parquet, which brings the robust performance boost to parquet and explore its effectiveness in an end-to-end benchmark with different realistic dataset distributions.
+We implement the column sketch algorithm as an open-source tool with support for accepting a parquet file and output modified parquet file containing the column sketch data structrues.
+The work demonstrates the prospect of enhancing an industry columnar storage format with new auxilary structures to make it better at the widely used SQL workflow of table scanning with predicate evaluation.
 
 \end{abstract}
 
@@ -69,7 +64,7 @@ Fill in this section with your topic sentence outline. Delete or comment out Sec
 \input{intro}
 
 %% Comment out this line before compiling and submitting the proposal to gradescope
-\input{instructions}
+% \input{instructions}
 
 
 %\clearpage

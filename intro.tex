@@ -1,3 +1,27 @@
 \section{Introduction}
 
-Fill in this section with your full introduction. 
+Disk I/O has always been a dominant factor in SQL query execution time, and pushing predicate evaluation down into the storage has long been employed for the benefit of skipping unnecessary I/Os.
+In traditional transactional database systems, the SQL optimizer can transform a sequential scan followed by a filter operator to a B+ tree index scan if possible. 
+Creating the right index can often bring 10x speedups to some queries. 
+The basic principle still governs modern OLAP workload which operates on petabyte-scale of data.
+The key to the efficient execution of queries is to have good data structrues on the underlying storage to allow skipping disk I/Os.
+
+However, existing approaches all have limitations in the context of OLAP workload.
+The limitation of using indexes is that it only reduces I/O when the predicate has extremely low selectivity, which is often the case in transactional workload but not that much in modern analytical workload.
+Therefore, data format used by modern OLAP database systems like apache parquet\cite{Parquet} often use a more lightweight data structure called zone map.
+The idea is to horizontally divide the table into many partitions, and keep metadata about each single partition like the min, max of each column values in that partition.
+The benefit of zone map comes from the ability to skip entire partitions if we can determine predicate on metadata alone. 
+Unfortunately, it only works well if the partitions are clustered on the right column, so that the min and max values are clustered.
+On the other hand, if the column is uniformly distributed across partitions, then there is a high chance that each partition's min and max resembles global min and max and we won't be able to skip any partitions at all.
+
+Column sketch, on the other hand, is a technique that can bring robust performance increase regardless of how data is partitioned or the selectivity of a given query\cite{Brian18}.
+It proposes a promising complement of existing techniques to make the storage format even better.
+However, the evaluation and experiment for the original project is limited to in-memory datasets rather than the whole pipeline of reading from storage, and it didn't propose possible integrations with widely used storage format like parquet.
+
+This project is aimed at reproducing and expanding the original column sketch project.
+We implement the algorithm as an open-source tool and design serialization and deserialization strategies for persisting the data structrues to parquet files.
+There are two main questions we answered through our evaluation of the project.
+First, we show that column sketch is effective in a complete parquet scanning benchmark, i.e., the overhead of reading additional structures from storage doesn't outweight its performance gain.
+Second, we demonstrate that the storage overhead of column sketch is reasonable and it is feasible to apply it to real world tables of large size.
+
+Through this project, we wish to demonstrate the prospect of improving the modern columnar storage format by bringing in new data structrues to support efficient scanning with predicate in a robust fashion.
