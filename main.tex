@@ -54,6 +54,7 @@ In modern SQL execution, predicate is often pushed into table scan to leverage t
 The effectiveness of techniques employed by apache parquet, i.e., zone maps and column indexes, are limited by data partitioning strategies and predicate selectivity, whereas new techniques which claim to have robust performance boost like column sketches are only evaluated with in-memory processing and lack integration into an actual storage format like parquet.
 In this project, we propose a reproduction and expansion of the column sketch technique on top of apache parquet, which brings the robust performance boost to parquet and explore its effectiveness in an end-to-end benchmark with different realistic dataset distributions.
 We implement the column sketch algorithm as an open-source tool with support for accepting a parquet file and output modified parquet file containing the column sketch data structrues.
+We also build a custom dataset generation tool to support generating parquet tables with statistic properties mimicing realistic workload data, and we use this tool to explore column sketch's effectiveness on an industry data format and realistic dataset.
 The work demonstrates the prospect of enhancing an industry columnar storage format with new auxilary structures to make it better at the widely used SQL workflow of table scanning with predicate evaluation.
 
 \end{abstract}
