@@ -6,7 +6,7 @@ Creating the right index can often bring 10x speedups to some queries.
 The basic principle still governs modern OLAP workload which operates on petabyte-scale of data.
 The key to the efficient execution of queries is to have good data structrues on the underlying storage to allow skipping disk I/Os.
 
-However, existing approaches all have limitations in the context of OLAP workload.
+However, existing approaches all have limitations in the context of OLAP workload\cite{Xinyu23}.
 The limitation of using indexes is that it only reduces I/O when the predicate has extremely low selectivity, which is often the case in transactional workload but not that much in modern analytical workload.
 Therefore, data format used by modern OLAP database systems like apache parquet\cite{Parquet} often use a more lightweight data structure called zone map.
 The idea is to horizontally divide the table into many partitions, and keep metadata about each single partition like the min, max of each column values in that partition.
@@ -16,7 +16,9 @@ On the other hand, if the column is uniformly distributed across partitions, the
 
 Column sketch, on the other hand, is a technique that can bring robust performance increase regardless of how data is partitioned or the selectivity of a given query\cite{Brian18}.
 It proposes a promising complement of existing techniques to make the storage format even better.
+In a nutshell, column sketch creates an order-preserving compression map and a compressed column over the original column and use the compressed column for query evaluation to reduce per-record memory footprint.
 However, the evaluation and experiment for the original project is limited to in-memory datasets rather than the whole pipeline of reading from storage, and it didn't propose possible integrations with widely used storage format like parquet.
+For example, the paper doesn't discuss how the compression map could be serialized to persistent storage and whether the performance boost is still robust when we read both the column and the compression map metadata from disk.
 
 This project is aimed at reproducing and expanding the original column sketch project.
 We implement the algorithm as an open-source tool and design serialization and deserialization strategies for persisting the data structrues to parquet files.
