@@ -24,7 +24,7 @@ Next week we will do two things in parallel. Firstly, we will design and impleme
 
 ## One sentence per person
 
-Xixiang Liu:
+Xixiang Liu: I researched about the relevant data structures and algorithms to get ready for implementing them.
 
 Zihan Shan: I reviewed the original paper for further understand the testbench to prepare running experiments on the prototype, and discussed plans for testing.
 
