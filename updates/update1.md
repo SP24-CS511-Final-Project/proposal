@@ -26,6 +26,6 @@ Next week we will do two things in parallel. Firstly, we will design and impleme
 
 Xixiang Liu:
 
-Zihan Shan: I reviewed the original paper for further understand the testbench to prepare running experiments on the prototype.
+Zihan Shan: I reviewed the original paper for further understand the testbench to prepare running experiments on the prototype, and discussed plans for testing.
 
 Yangchen Ye: I engineered the prototype of column sketch, settling down the design decisions unanswered in the original paper.
