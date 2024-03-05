@@ -41,6 +41,6 @@ We will start with a 'hello-world' style prototype. We will implement a binary w
 
 Xixiang Liu: 
 
-Zihan Shan: 
+Zihan Shan: I build the basic version of testing data generator, which is able to generate parquet file filling with columns of data following given distribution type like normal distribution. I will work on combining this part into our testing framenwork.
 
 Yangchen Ye: I built the evaluation infrastructure and reproduced the SIMD scanner, and conducted micro benchmark about the performance of column sketch.
