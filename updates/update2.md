@@ -39,7 +39,7 @@ We will start with a 'hello-world' style prototype. We will implement a binary w
 
 ## One sentence per person
 
-Xixiang Liu: 
+Xixiang Liu: I reviewed the background materials again, and I scrutinized the code written by my teammates to get ready for my work in the future.
 
 Zihan Shan: I build the basic version of testing data generator, which is able to generate parquet file filling with columns of data following given distribution type like normal distribution. I will work on combining this part into our testing framenwork.
 
