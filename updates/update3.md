@@ -1,4 +1,4 @@
-# CS511 SP24 Final Project Update 2
+# CS511 SP24 Final Project Update 3
 
 Author: Yangchen Ye, Xixiang Liu, Zihan Shan
 
@@ -28,6 +28,6 @@ We would implement controlled experiment with controlled dataset generated from 
 
 Xixiang Liu: 
 
-Zihan Shan:
+Zihan Shan: I am working on debugging and adding more features to the dataset generator, in order to satisfy our testbench requirements.
 
 Yangchen Ye: I coded the initial version of the transformer which reads and runs column sketch to augment the parquet file.
