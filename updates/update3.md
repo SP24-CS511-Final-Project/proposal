@@ -26,7 +26,7 @@ We would implement controlled experiment with controlled dataset generated from 
 
 ## One sentence per person
 
-Xixiang Liu: 
+Xixiang Liu: I further learn the rationale behind the codes, and I am working on extending the basic version parquet converter.
 
 Zihan Shan: I am working on debugging and adding more features to the dataset generator, in order to satisfy our testbench requirements.
 
